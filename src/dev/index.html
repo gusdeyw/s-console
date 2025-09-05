@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S-Console Development</title>
+</head>
+
+<body>
+    <h1 class=" text-2xl font-bold mb-4">S-Console Development</h1>
+
+    <div id="console-container"></div>
+
+
+    <div class="mt-10 p-5">
+        <form id="commandForm">
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">
+                    Command Key
+                </label>
+                <input
+                    class="shadow border-#1e1e1e appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="commandKey" required>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">
+                    What to Show
+                </label>
+                <input
+                    class="shadow border-#1e1e1e appearasnce-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="commandOutput">
+            </div>
+            <div class="flex items-center justify-left">
+                <button
+                    class="border-2 border-#1e1e1e rounded-xl font-bold py-2 px-4 focus:outline-none focus:shadow-outline"
+                    type="submit">
+                    Add Command
+                </button>
+            </div>
+        </form>
+    </div>
+    <script type="module" src="./main.ts"></script>
+</body>
+
+</html>
