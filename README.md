@@ -2,6 +2,10 @@
 
 A lightweight, customizable JavaScript console library for web applications. Built with TypeScript and styled with UnoCSS.
 
+<p align="center">
+  <img src="./public/v1_screenshot.png" alt="S-Console Screenshot" />
+</p>
+
 ## Features
 
 - 🎨 Customizable appearance (font size, font family, themes)
