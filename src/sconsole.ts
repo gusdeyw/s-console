@@ -1,17 +1,34 @@
 // sConsole.ts
 // Main class for s-console library
 
+import type { ConsoleOptions } from './types/core';
+
 export class sconsole {
     private container: HTMLElement | null = null;
     private inputField: HTMLInputElement | null = null;
     private consoleArea: HTMLElement | null = null;
     private commands: Map<string, () => void> = new Map();
+    private options: ConsoleOptions = {
+        fontSize: '14px',
+        fontFamily: 'monospace',
+        theme: 'dark'
+    };
 
-    constructor(containerId?: string) {
+    constructor(containerId?: string, userOptions?: Partial<ConsoleOptions>) {
         if (containerId) {
             this.container = document.getElementById(containerId);
         }
+
+        // Merge user options with defaults
+        if (userOptions) {
+            this.options = { ...this.options, ...userOptions };
+        }
+
         this.init();
+        this.setupDefaultCommands();
+
+        // Make console available globally for debugging
+        (window as any).sConsole = this;
     }
 
     private init() {
@@ -19,9 +36,37 @@ export class sconsole {
         this.setupEventListeners();
     }
 
+    private setupDefaultCommands() {
+        // Built-in help command that lists all available commands
+        this.addCommand('help', () => {
+            const commandList = Array.from(this.commands.keys()).join(', ');
+            this.appendToConsole(`Available commands: ${commandList}`);
+        });
+
+        // Built-in clear command
+        this.addCommand('clear', () => {
+            this.clear();
+        });
+
+        // Font size adjustment commands
+        // this.addCommand('font+', () => {
+        //     this.adjustFontSize(2);
+        // });
+
+        // this.addCommand('font-', () => {
+        //     this.adjustFontSize(-2);
+        // });
+
+        // Show current options
+        // this.addCommand('options', () => {
+        //     this.appendToConsole(`Font Size: ${this.options.fontSize}`);
+        //     this.appendToConsole(`Font Family: ${this.options.fontFamily}`);
+        //     this.appendToConsole(`Theme: ${this.options.theme}`);
+        // });
+    }
+
     private createConsole() {
         const consoleHtml = `
-            <div class=":uno: p-5">
                 <div class=":uno: rounded-lg border-2 border-solid border-#1e1e1e">
                     <div class=":uno: text-gray-700 text-sm font-bold my-2 px-3 flex justify-between">
                         <label>Console</label>
@@ -31,7 +76,7 @@ export class sconsole {
                             </svg>
                         </div>
                     </div>
-                    <div class=":uno: bg-#1e1e1e h-56 overflow-y-auto w-full text-white p-3" id="consoleParent">
+                    <div class=":uno: px-3 bg-#1e1e1e h-56 overflow-y-auto w-full text-white p-3" id="consoleParent">
                         <div class=":uno: bg-#1e1e1e w-full" id="consoleOutput"></div>
                         <div class=":uno: flex">
                             <p class=":uno: text-white">User> </p>
@@ -39,7 +84,6 @@ export class sconsole {
                         </div>
                     </div>
                 </div>
-            </div>
         `;
 
         if (this.container) {
@@ -55,7 +99,29 @@ export class sconsole {
         // Get references to elements
         this.inputField = this.container.querySelector('#consoleInput') as HTMLInputElement;
         this.consoleArea = this.container.querySelector('#consoleOutput') as HTMLElement;
+
+        // Apply initial font styles
+        this.applyFontStyles();
     }
+
+    private applyFontStyles() {
+        if (this.consoleArea) {
+            this.consoleArea.style.fontSize = this.options.fontSize;
+            this.consoleArea.style.fontFamily = this.options.fontFamily;
+        }
+        if (this.inputField) {
+            this.inputField.style.fontSize = this.options.fontSize;
+            this.inputField.style.fontFamily = this.options.fontFamily;
+        }
+    }
+
+    // private adjustFontSize(change: number) {
+    //     const currentSize = parseInt(this.options.fontSize);
+    //     const newSize = Math.max(8, Math.min(32, currentSize + change)); // Min 8px, Max 32px
+    //     this.options.fontSize = `${newSize}px`;
+    //     this.applyFontStyles();
+    //     this.appendToConsole(`Font size changed to: ${this.options.fontSize}`);
+    // }
 
     private setupEventListeners() {
         if (!this.inputField || !this.consoleArea) return;
@@ -82,11 +148,6 @@ export class sconsole {
     }
 
     private handleInput(input: string) {
-        if (input === 'clear') {
-            this.clear();
-            return;
-        }
-
         this.appendToConsole(`User> ${input}`);
 
         if (this.commands.has(input)) {
@@ -102,6 +163,12 @@ export class sconsole {
 
     public addCommand(key: string, callback: () => void) {
         this.commands.set(key, callback);
+    }
+
+    public updateOptions(newOptions: Partial<ConsoleOptions>) {
+        this.options = { ...this.options, ...newOptions };
+        this.applyFontStyles();
+        this.appendToConsole(`Options updated`);
     }
 
     public appendToConsole(message: string) {
