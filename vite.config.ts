@@ -1,12 +1,11 @@
 import { defineConfig } from 'vite';
 import UnoCSS from 'unocss/vite';
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
     plugins: [UnoCSS()],
-    // Development server config
-    root: 'src/dev', // Set root to dev folder
+    ...(command === 'serve' ? { root: 'src/dev' } : {}),
     server: {
-        open: true, // Open index.html automatically
+        open: true,
     },
     build: {
         lib: {
@@ -22,4 +21,4 @@ export default defineConfig({
             },
         },
     },
-});
+}));

@@ -3,14 +3,17 @@ import 'uno.css';
 import 'virtual:unocss-devtools';
 import { sconsole } from '../sconsole.ts';
 
-// Initialize the console for development
-const console = new sconsole('console-container');
+// Example 1: Initialize console with default options
+// const console = new sconsole('console-container');
 
-// Add some default commands for testing
-console.addCommand('help', () => {
-    console.appendToConsole('Available commands: help, time, hello, test');
+// Example 2: Initialize console with custom options
+const console = new sconsole('console-container', {
+    fontSize: '16px',
+    fontFamily: 'Arial',
+    theme: 'light'
 });
 
+// Add some example commands for testing
 console.addCommand('time', () => {
     console.appendToConsole(new Date().toLocaleString());
 });
@@ -22,6 +25,19 @@ console.addCommand('hello', () => {
 console.addCommand('test', () => {
     console.appendToConsole('Test command executed successfully!');
 });
+
+// Example 3: Add a command that uses updateOptions
+// console.addCommand('bigfont', () => {
+//     console.updateOptions({ fontSize: '18px', fontFamily: 'Arial' });
+// });
+
+// console.addCommand('smallfont', () => {
+//     console.updateOptions({ fontSize: '12px', fontFamily: 'monospace' });
+// });
+
+// Example 4: Show available built-in commands
+console.appendToConsole('Welcome! Try these commands:');
+console.appendToConsole('• help - Show all commands');
 
 // Handle form submission for adding new commands
 const form = document.getElementById('commandForm') as HTMLFormElement;
@@ -41,6 +57,3 @@ form?.addEventListener('submit', (e) => {
     keyInput.value = '';
     outputInput.value = '';
 });
-
-// Make console available globally for debugging
-(window as any).sConsole = console;
