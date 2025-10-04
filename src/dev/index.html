@@ -92,21 +92,37 @@
             </section>
 
             <section>
-                <h2 class="text-2xl font-bold mb-4 text-gray-800">Installation & Usage</h2>
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">CDN Usage</h2>
                 <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-md font-semibold mb-3 text-gray-700">📦 Include via CDN</h3>
                     <pre
-                        class="bg-gray-100 p-4 rounded text-sm overflow-x-auto mb-4"><code>npm install s-console</code></pre>
-                    <pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto"><code>import { sconsole } from 's-console';
+                        class="bg-gray-100 p-4 rounded text-sm overflow-x-auto mb-4"><code>&lt;!-- Include CSS --&gt;
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/gusdeyw/s-console@latest/dist/s-console.css"&gt;
 
-const console = new sconsole('container-id', {
+&lt;!-- Include JavaScript --&gt;
+&lt;script src="https://cdn.jsdelivr.net/gh/gusdeyw/s-console@latest/dist/s-console.umd.js"&gt;&lt;/script&gt;</code></pre>
+
+                    <h3 class="text-md font-semibold mb-3 text-gray-700">🚀 Initialize Console</h3>
+                    <pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto"><code>&lt;div id="my-console"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  const console = new sconsole('my-console', {
     theme: 'dark',
     fontSize: '16px',
     fontFamily: 'monospace'
-});
+  });
 
-console.addCommand('hello', () => {
-    console.appendToConsole('Hello World!');
-});</code></pre>
+  console.addCommand('hello', () => {
+    console.appendToConsole('Hello World! 👋');
+  });
+&lt;/script&gt;</code></pre>
+
+                    <div class="mt-4 p-3 bg-blue-50 border-l-4 border-blue-400">
+                        <p class="text-sm text-blue-700">
+                            <strong>💡 Tip:</strong> Replace <code>@latest</code> with a specific version like
+                            <code>@v1.0.0</code> for production use.
+                        </p>
+                    </div>
                 </div>
             </section>
         </main>

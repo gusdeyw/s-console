@@ -24,7 +24,26 @@ A lightweight, customizable JavaScript console library for web applications. Bui
 
 ## Installation
 
-### Build from Source (Recommended)
+### CDN (Recommended)
+```html
+<!-- Include CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/gusdeyw/s-console@latest/dist/s-console.css">
+
+<!-- Include JavaScript (choose one format) -->
+<!-- ES Module -->
+<script type="module">
+  import sconsole from 'https://cdn.jsdelivr.net/gh/gusdeyw/s-console@latest/dist/s-console.es.js';
+  const console = new sconsole('my-container');
+</script>
+
+<!-- Or UMD (for older browsers) -->
+<script src="https://cdn.jsdelivr.net/gh/gusdeyw/s-console@latest/dist/s-console.umd.js"></script>
+<script>
+  const console = new sconsole('my-container');
+</script>
+```
+
+### Build from Source
 ```bash
 # Clone the repository
 git clone https://github.com/gusdeyw/s-console.git

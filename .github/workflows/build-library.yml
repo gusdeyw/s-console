@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
@@ -28,9 +28,19 @@ jobs:
       - name: Build library
         run: npm run build:lib
         
-      - name: Upload library artifacts
-        uses: actions/upload-artifact@v4
+      - name: Commit built files to repository
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add dist/
+          git diff --staged --quiet || git commit -m "Build: Update dist files for ${{ github.ref_name }}"
+          git push
+        
+      - name: Create Release with Assets
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
         with:
-          name: library-build-${{ github.sha }}
-          path: dist/
-          retention-days: 30
+          files: |
+            dist/*.js
+            dist/*.css
+          generate_release_notes: true

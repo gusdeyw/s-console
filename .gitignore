@@ -8,9 +8,12 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-dist
+dist-demo
 dist-ssr
 *.local
+
+# Keep dist/ folder for CDN distribution
+!dist/
 
 # Editor directories and files
 .vscode/*
