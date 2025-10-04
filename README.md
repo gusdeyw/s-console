@@ -1,10 +1,22 @@
-# S-Console
-
-A lightweight, customizable JavaScript console library for web applications. Built with TypeScript and styled with UnoCSS.
 
 <p align="center">
   <img src="./public/v1_screenshot.png" alt="S-Console Screenshot" />
 </p>
+
+# S-Console
+
+
+<p align="center">
+  <strong>A lightweight, customizable JavaScript console library for web applications</strong>
+</p>
+
+<p align="center">
+  <a href="https://gusdeyw.github.io/s-console/">🚀 Live Demo</a> • 
+  <a href="https://github.com/gusdeyw/s-console">📦 GitHub</a> • 
+  <a href="https://cdn.jsdelivr.net/gh/gusdeyw/s-console@latest/dist/">📡 CDN</a>
+</p>
+
+Built with TypeScript and styled with UnoCSS.
 
 ## Features
 
