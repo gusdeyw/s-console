@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S-Console - Interactive JavaScript Console Library</title>
+    <meta name="description" content="A lightweight, customizable JavaScript console library for web applications">
+  <script type="module" crossorigin src="/s-console/assets/index-D5H0Qc26.js"></script>
+  <link rel="stylesheet" crossorigin href="/s-console/assets/index-BGOIX50S.css">
+</head>
+
+<body class="bg-gray-50 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold mb-4 text-gray-800">S-Console</h1>
+            <p class="text-lg text-gray-600 mb-4">Interactive JavaScript Console Library</p>
+            <div class="flex justify-center gap-4 mb-6">
+                <a href="https://github.com/gusdeyw/s-console"
+                    class="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700 transition-colors">
+                    View on GitHub
+                </a>
+                <button id="toggleTheme"
+                    class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors">
+                    Toggle Theme
+                </button>
+            </div>
+        </header>
+
+        <main>
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">Live Demo</h2>
+                <p class="text-gray-600 mb-4">
+                    Try the console below! Type 'help' to see available commands, or try 'time', 'hello', or 'test'.
+                </p>
+
+                <div class="bg-white rounded-lg shadow-lg p-6" id="console-container"></div>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">Add Custom Commands</h2>
+                <p class="text-gray-600 mb-4">
+                    Create your own commands dynamically and see them work in the console above.
+                </p>
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <form id="commandForm">
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">
+                                Command Name
+                            </label>
+                            <input
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="commandKey" placeholder="e.g., mycommand" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">
+                                Command Output
+                            </label>
+                            <input
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="commandOutput" placeholder="What should this command display?">
+                        </div>
+                        <div class="flex items-center justify-start">
+                            <button
+                                class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition-colors"
+                                type="submit">
+                                Add Command
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">Features</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-lg font-semibold mb-2">🎨 Customizable Themes</h3>
+                        <p class="text-gray-600">Light and dark themes with customizable colors and fonts</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-lg font-semibold mb-2">⚡ Lightweight</h3>
+                        <p class="text-gray-600">Minimal dependencies and small bundle size</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-lg font-semibold mb-2">🔧 Easy Integration</h3>
+                        <p class="text-gray-600">Simple API for adding custom commands</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-lg font-semibold mb-2">📱 Responsive</h3>
+                        <p class="text-gray-600">Works perfectly on desktop and mobile devices</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">CDN Usage</h2>
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-md font-semibold mb-3 text-gray-700">📦 Include via CDN</h3>
+                    <pre
+                        class="bg-gray-100 p-4 rounded text-sm overflow-x-auto mb-4"><code>&lt;!-- Include CSS --&gt;
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/gusdeyw/s-console@latest/dist/s-console.css"&gt;
+
+&lt;!-- Include JavaScript --&gt;
+&lt;script src="https://cdn.jsdelivr.net/gh/gusdeyw/s-console@latest/dist/s-console.umd.js"&gt;&lt;/script&gt;</code></pre>
+
+                    <h3 class="text-md font-semibold mb-3 text-gray-700">🚀 Initialize Console</h3>
+                    <pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto"><code>&lt;div id="my-console"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  const console = new sconsole('my-console', {
+    theme: 'dark',
+    fontSize: '16px',
+    fontFamily: 'monospace'
+  });
+
+  console.addCommand('hello', () => {
+    console.appendToConsole('Hello World! 👋');
+  });
+&lt;/script&gt;</code></pre>
+
+                    <div class="mt-4 p-3 bg-blue-50 border-l-4 border-blue-400">
+                        <p class="text-sm text-blue-700">
+                            <strong>💡 Tip:</strong> Replace <code>@latest</code> with a specific version like
+                            <code>@v1.0.0</code> for production use.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="text-center mt-12 text-gray-500">
+            <p>&copy; 2025 S-Console. Made with ❤️ for the web development community.</p>
+        </footer>
+    </div>
+
+</body>
+
+</html>
