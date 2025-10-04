@@ -1,8 +1,8 @@
 name: Deploy Demo to GitHub Pages
 
 on:
-  release:
-    types: [ published ]
+  push:
+    branches: [ deploy ]
   workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
