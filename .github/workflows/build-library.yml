@@ -1,0 +1,36 @@
+name: Build and Release Library
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Build library
+        run: npm run build:lib
+        
+      - name: Upload library artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: library-build-${{ github.sha }}
+          path: dist/
+          retention-days: 30

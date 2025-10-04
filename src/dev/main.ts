@@ -3,41 +3,51 @@ import 'uno.css';
 import 'virtual:unocss-devtools';
 import { sconsole } from '../sconsole.ts';
 
-// Example 1: Initialize console with default options
-// const console = new sconsole('console-container');
-
-// Example 2: Initialize console with custom options
-const console = new sconsole('console-container', {
+// Initialize console with default options
+let currentTheme: 'light' | 'dark' = 'dark';
+const consoleInstance = new sconsole('console-container', {
     fontSize: '16px',
     fontFamily: 'Arial',
-    theme: 'light'
+    theme: currentTheme
 });
 
-// Add some example commands for testing
-console.addCommand('time', () => {
-    console.appendToConsole(new Date().toLocaleString());
+// Add built-in demo commands
+consoleInstance.addCommand('time', () => {
+    consoleInstance.appendToConsole(`Current time: ${new Date().toLocaleString()}`);
 });
 
-console.addCommand('hello', () => {
-    console.appendToConsole('Hello from S-Console!');
+consoleInstance.addCommand('hello', () => {
+    consoleInstance.appendToConsole('Hello from S-Console! 👋');
 });
 
-console.addCommand('test', () => {
-    console.appendToConsole('Test command executed successfully!');
+consoleInstance.addCommand('test', () => {
+    consoleInstance.appendToConsole('Test command executed successfully! ✅');
 });
 
-// Example 3: Add a command that uses updateOptions
-// console.addCommand('bigfont', () => {
-//     console.updateOptions({ fontSize: '18px', fontFamily: 'Arial' });
-// });
+consoleInstance.addCommand('demo', () => {
+    consoleInstance.appendToConsole('This is a live demo of S-Console library');
+    consoleInstance.appendToConsole('Try typing "help" to see all available commands');
+});
 
-// console.addCommand('smallfont', () => {
-//     console.updateOptions({ fontSize: '12px', fontFamily: 'monospace' });
-// });
+consoleInstance.addCommand('github', () => {
+    consoleInstance.appendToConsole('Visit: https://github.com/gusdeyw/s-console');
+});
 
-// Example 4: Show available built-in commands
-console.appendToConsole('Welcome! Try these commands:');
-console.appendToConsole('• help - Show all commands');
+// Welcome message
+setTimeout(() => {
+    consoleInstance.appendToConsole('🎉 Welcome to S-Console Demo!');
+    consoleInstance.appendToConsole('Type "help" to see available commands or "demo" for more info');
+}, 500);
+
+// Theme toggle functionality
+const toggleThemeButton = document.getElementById('toggleTheme');
+if (toggleThemeButton) {
+    toggleThemeButton.addEventListener('click', () => {
+        currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        consoleInstance.updateOptions({ theme: currentTheme });
+        consoleInstance.appendToConsole(`Theme switched to ${currentTheme} mode`);
+    });
+}
 
 // Handle form submission for adding new commands
 const form = document.getElementById('commandForm') as HTMLFormElement;
@@ -46,14 +56,19 @@ form?.addEventListener('submit', (e) => {
     const keyInput = document.getElementById('commandKey') as HTMLInputElement;
     const outputInput = document.getElementById('commandOutput') as HTMLInputElement;
 
-    const key = keyInput.value;
-    const output = outputInput.value;
+    const key = keyInput.value.trim();
+    const output = outputInput.value.trim();
 
-    console.addCommand(key, () => {
-        console.appendToConsole(output);
-    });
+    if (key && output) {
+        consoleInstance.addCommand(key, () => {
+            consoleInstance.appendToConsole(output);
+        });
 
-    alert('Command added successfully!');
-    keyInput.value = '';
+        consoleInstance.appendToConsole(`✅ Command "${key}" added successfully!`);
+        keyInput.value = '';
+        outputInput.value = '';
+    } else {
+        alert('Please enter both command name and output.');
+    }
     outputInput.value = '';
 });
