@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "tsc && vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "build:lib": "tsc && vite build",
+    "build:demo": "tsc && vite build --config vite.demo.config.ts",
+    "preview": "vite preview",
+    "preview:demo": "vite preview --config vite.demo.config.ts --outDir dist-demo"
   },
   "devDependencies": {
     "@unocss/transformer-compile-class": "^66.5.0",
