@@ -76,6 +76,42 @@ if (toggleThemeButton) {
   toggleThemeButton.textContent = `Theme: ${currentTheme}`;
 }
 
+// === 🧱 Drag & Resize Toggle Buttons ===
+const dragToggle = document.getElementById("dragToggle");
+const resizeToggle = document.getElementById("resizeToggle");
+
+let isDraggable = true;
+let isResizable = true;
+
+// 🧲 Toggle draggable feature
+if (dragToggle) {
+  dragToggle.addEventListener("click", () => {
+    isDraggable = !isDraggable;
+    consoleInstance.toggleDraggable(isDraggable);
+
+    dragToggle.textContent = isDraggable ? "Drag: On" : "Drag: Off";
+    dragToggle.classList.toggle("bg-blue-600", isDraggable);
+    dragToggle.classList.toggle("bg-gray-800", !isDraggable);
+  });
+  dragToggle.textContent = "Drag: On";
+}
+
+// 📏 Toggle resizable feature
+if (resizeToggle) {
+  resizeToggle.addEventListener("click", () => {
+    isResizable = !isResizable;
+    consoleInstance.toggleResizable(isResizable);
+
+    resizeToggle.textContent = isResizable ? "Resize: On" : "Resize: Off";
+    resizeToggle.classList.toggle("bg-blue-600", isResizable);
+    resizeToggle.classList.toggle("bg-gray-800", !isResizable);
+  });
+  resizeToggle.textContent = "Resize: On";
+}
+
+
+
+
 // Handle form submission for adding new commands
 const form = document.getElementById("commandForm") as HTMLFormElement;
 form?.addEventListener("submit", (e) => {
@@ -100,4 +136,7 @@ form?.addEventListener("submit", (e) => {
     alert("Please enter both command name and output.");
   }
   outputInput.value = "";
+  
 });
+
+

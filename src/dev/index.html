@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>S-Console - Interactive JavaScript Console Library</title>
   <meta name="description" content="A lightweight, customizable JavaScript console library for web applications" />
+
+  <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body class="bg-gray-50 min-h-screen">
@@ -31,11 +33,21 @@
     <main>
       <section class="mb-12">
         <h2 class="text-2xl font-bold text-gray-800 mb-4">Live Demo</h2>
+        
         <p class="text-gray-600 mb-6">
           Try the console below! Type <code>help</code> to see available commands, or try <code>time</code>,
           <code>hello</code>, or <code>test</code>.
         </p>
-        <div id="console-container" class="bg-white rounded-lg shadow-lg p-6"></div>
+        <div id="controlPanel" class="flex items-center mb-2 space-x-2 z-50">
+  <button id="dragToggle" class="theme-btn px-3 py-1 mr-2 rounded-md bg-gray-800 text-white hover:bg-blue-600 transition-all text-sm">
+    Drag
+  </button>
+  <button id="resizeToggle" class="theme-btn px-3 py-1 rounded-md bg-gray-800 text-white hover:bg-blue-600 transition-all text-sm">
+    Resize
+  </button>
+</div>
+        <div id="console-container"></div>
+
       </section>
 
       <!-- Add Custom Commands -->
@@ -137,3 +149,5 @@
 </body>
 
 </html>
+
+
