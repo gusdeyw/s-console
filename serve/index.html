@@ -9,10 +9,12 @@
 </head>
 
 <body>
+    <!-- Header -->
     <h1 class=" text-2xl font-bold mb-4">S-Console</h1>
 
     <div class="p-5" id="console-container"></div>
-
+    
+    <!-- Add Custom Commands -->
     <div class="mt-10 p-5">
         <form id="commandForm">
             <div class="mb-4">
@@ -40,7 +42,11 @@
             </div>
         </form>
     </div>
+
+    
     <script src="../dist/s-console.umd.js"></script>
+
+    <!-- Form Handling and Adding Commands -->
     <script>
         const console = new sconsole('console-container');
 
@@ -73,6 +79,7 @@
             keyInput.value = '';
             outputInput.value = '';
         });
+        
     </script>
 </body>
 
