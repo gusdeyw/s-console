@@ -1,121 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>S-Console - Interactive JavaScript Console Library</title>
-  <meta name="description" content="A lightweight, customizable JavaScript console library for web applications" />
+  <head>
+    <meta charset="UTF-8" />
 
-  <link rel="stylesheet" href="./style.css" />
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>S-Console - Interactive JavaScript Console Library</title>
+    <meta
+      name="description"
+      content="A lightweight, customizable JavaScript console library for web applications"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
 
-<body class="bg-gray-50 min-h-screen">
-  <div class="container mx-auto px-4 py-8">
+  <body class="bg-gray-50 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+      
+      <!-- HEADER SECTION -->
+      <header class="text-center mb-8">
+        <!--  Library name + subtitle -->
+        <h1 class="text-4xl font-bold text-gray-800 mb-2">S-Console</h1>
+        <p class="text-lg text-gray-600 mb-6">Interactive JavaScript Console Library</p>
 
-    <!-- Header -->
-    <header class="text-center mb-8">
-      <h1 class="text-4xl font-bold text-gray-800 mb-2">S-Console</h1>
-      <p class="text-lg text-gray-600 mb-6">Interactive JavaScript Console Library</p>
+        <!--  GitHub + Theme Toggle Buttons -->
+        <div class="flex justify-center gap-4">
+          <a
+            href="https://github.com/gusdeyw/s-console"
+            class="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700 transition"
+          >
+            View on GitHub
+          </a>
 
-      <div class="flex justify-center gap-4">
-        <a href="https://github.com/gusdeyw/s-console"
-          class="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700 transition">
-          View on GitHub
-        </a>
-        <button id="toggleTheme" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">
-          Toggle Theme
-        </button>
-      </div>
-    </header>
+          <!-- Toggle Theme Button
+               - Connected to JS logic in main.ts
+               - Switches between light/dark modes
+          -->
+          <button
+            id="toggleTheme"
+            class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
+          >
+            Toggle Theme
+          </button>
+        </div>
+      </header>
 
-    <!-- Live Demo -->
-    <main>
-      <section class="mb-12">
-        <h2 class="text-2xl font-bold text-gray-800 mb-4">Live Demo</h2>
-        
-        <p class="text-gray-600 mb-6">
-          Try the console below! Type <code>help</code> to see available commands, or try <code>time</code>,
-          <code>hello</code>, or <code>test</code>.
-        </p>
-        <div id="controlPanel" class="flex items-center mb-2 space-x-2 z-50">
-  <button id="dragToggle" class="theme-btn px-3 py-1 mr-2 rounded-md bg-gray-800 text-white hover:bg-blue-600 transition-all text-sm">
-    Drag
-  </button>
-  <button id="resizeToggle" class="theme-btn px-3 py-1 rounded-md bg-gray-800 text-white hover:bg-blue-600 transition-all text-sm">
-    Resize
-  </button>
-</div>
-        <div id="console-container"></div>
+      <main>
+        <!-- LIVE DEMO SECTION -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-bold text-gray-800 mb-4">Live Demo</h2>
+          
+          <!-- Instructions for trying out demo commands -->
+          <p class="text-gray-600 mb-6">
+            Try the console below! Type <code>help</code> to see available commands, 
+            or try <code>time</code>, <code>hello</code>, or <code>test</code>.
+          </p>
 
-      </section>
-
-      <!-- Add Custom Commands -->
-      <section class="mb-12">
-        <h2 class="text-2xl font-bold text-gray-800 mb-4">Add Custom Commands</h2>
-        <p class="text-gray-600 mb-6">
-          Create your own commands dynamically and see them work in the console above.
-        </p>
-
-        <div class="bg-white rounded-lg shadow-lg p-6">
-          <form id="commandForm">
-            <div class="mb-4">
-              <label class="block text-gray-700 text-sm font-bold mb-2">Command Name</label>
-              <input id="commandKey" type="text" placeholder="e.g., mycommand" required
-                class="border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline" />
-            </div>
-
-            <div class="mb-4">
-              <label class="block text-gray-700 text-sm font-bold mb-2">Command Output</label>
-              <input id="commandOutput" type="text" placeholder="What should this command display?"
-                class="border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline" />
-            </div>
-
-            <button type="submit"
-              class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded transition">
-              Add Command
+          <!-- Control panel for interactive UI toggles -->
+          <div
+            id="controlPanel"
+            class="flex items-center mb-2 space-x-2 z-50"
+          >
+            <!-- Drag toggle: enables/disables draggable console behavior -->
+            <button
+              id="dragToggle"
+              class="theme-btn px-3 py-1 mr-2 rounded-md bg-gray-800 text-white hover:bg-blue-600 transition-all text-sm"
+            >
+              Drag
             </button>
-          </form>
-        </div>
-      </section>
 
-      <!-- Features -->
-      <section class="mb-12">
-        <h2 class="text-2xl font-bold text-gray-800 mb-4">Features</h2>
-        <div class="grid md:grid-cols-2 gap-6">
-          <div class="bg-white rounded-lg shadow-lg p-6">
-            <h3 class="text-lg font-semibold mb-2">🎨 Customizable Themes</h3>
-            <p class="text-gray-600">Light and dark themes with customizable colors and fonts.</p>
+            <!-- Resize toggle: enables/disables resizable console -->
+            <button
+              id="resizeToggle"
+              class="theme-btn px-3 py-1 rounded-md bg-gray-800 text-white hover:bg-blue-600 transition-all text-sm"
+            >
+              Resize
+            </button>
           </div>
-          <div class="bg-white rounded-lg shadow-lg p-6">
-            <h3 class="text-lg font-semibold mb-2">⚡ Lightweight</h3>
-            <p class="text-gray-600">Minimal dependencies and small bundle size.</p>
-          </div>
-          <div class="bg-white rounded-lg shadow-lg p-6">
-            <h3 class="text-lg font-semibold mb-2">🔧 Easy Integration</h3>
-            <p class="text-gray-600">Simple API for adding custom commands.</p>
-          </div>
-          <div class="bg-white rounded-lg shadow-lg p-6">
-            <h3 class="text-lg font-semibold mb-2">📱 Responsive</h3>
-            <p class="text-gray-600">Works perfectly on desktop and mobile devices.</p>
-          </div>
-        </div>
-      </section>
 
-      <!-- CDN Usage -->
-      <section>
-        <h2 class="text-2xl font-bold text-gray-800 mb-4">CDN Usage</h2>
-        <div class="bg-white rounded-lg shadow-lg p-6">
-          <h3 class="text-md font-semibold text-gray-700 mb-3">📦 Include via CDN</h3>
-          <pre
-            class="bg-gray-100 p-4 rounded text-sm overflow-x-auto mb-4"><code>&lt;!-- Include CSS --&gt;
+          <!-- Console Mount Point
+              The main interactive console is injected here dynamically 
+              by main.ts through the sconsole() class.
+          -->
+          <div id="console-container"></div>
+        </section>
+
+        <!--
+             ADD CUSTOM COMMANDS SECTION
+         -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-bold text-gray-800 mb-4">Add Custom Commands</h2>
+          <p class="text-gray-600 mb-6">
+            Create your own commands dynamically and see them work in the console above.
+          </p>
+
+          <!--  Custom command creation form -->
+          <div class="bg-white rounded-lg shadow-lg p-6">
+            <form id="commandForm">
+              <!-- Input for new command name -->
+              <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">
+                  Command Name
+                </label>
+                <input
+                  id="commandKey"
+                  type="text"
+                  placeholder="e.g., mycommand"
+                  required
+                  class="border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline"
+                />
+              </div>
+
+              <!-- Input for new command output text -->
+              <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">
+                  Command Output
+                </label>
+                <input
+                  id="commandOutput"
+                  type="text"
+                  placeholder="What should this command display?"
+                  class="border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline"
+                />
+              </div>
+
+              <!-- Button to add new command -->
+              <button
+                type="submit"
+                class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded transition"
+              >
+                Add Command
+              </button>
+            </form>
+          </div>
+        </section>
+
+        <!--
+             FEATURES SECTION
+        -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-bold text-gray-800 mb-4">Features</h2>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <!-- Feature Card: Customizable Themes -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+              <h3 class="text-lg font-semibold mb-2">🎨 Customizable Themes</h3>
+              <p class="text-gray-600">
+                Light and dark themes with customizable colors and fonts.
+              </p>
+            </div>
+
+            <!-- Feature Card: Lightweight -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+              <h3 class="text-lg font-semibold mb-2">⚡ Lightweight</h3>
+              <p class="text-gray-600">
+                Minimal dependencies and small bundle size.
+              </p>
+            </div>
+
+            <!-- Feature Card: Easy Integration -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+              <h3 class="text-lg font-semibold mb-2">🔧 Easy Integration</h3>
+              <p class="text-gray-600">
+                Simple API for adding custom commands.
+              </p>
+            </div>
+
+            <!-- Feature Card: Responsive -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+              <h3 class="text-lg font-semibold mb-2">📱 Responsive</h3>
+              <p class="text-gray-600">
+                Works perfectly on desktop and mobile devices.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 
+             CDN USAGE SECTION
+         -->
+        <section>
+          <h2 class="text-2xl font-bold text-gray-800 mb-4">CDN Usage</h2>
+          <div class="bg-white rounded-lg shadow-lg p-6">
+            
+            <!-- How to include S-Console via CDN -->
+            <h3 class="text-md font-semibold text-gray-700 mb-3">📦 Include via CDN</h3>
+            <pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto mb-4">
+<code>&lt;!-- Include CSS --&gt;
 &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/gusdeyw/s-console@latest/dist/s-console.css"&gt;
 
 &lt;!-- Include JavaScript --&gt;
-&lt;script src="https://cdn.jsdelivr.net/gh/gusdeyw/s-console@latest/dist/s-console.umd.js"&gt;&lt;/script&gt;</code></pre>
+&lt;script src="https://cdn.jsdelivr.net/gh/gusdeyw/s-console@latest/dist/s-console.umd.js"&gt;&lt;/script&gt;
+</code></pre>
 
-          <h3 class="text-md font-semibold text-gray-700 mb-3">🚀 Initialize Console</h3>
-          <pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto"><code>&lt;div id="my-console"&gt;&lt;/div&gt;
+            <!-- Example initialization code -->
+            <h3 class="text-md font-semibold text-gray-700 mb-3">🚀 Initialize Console</h3>
+            <pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto">
+<code>&lt;div id="my-console"&gt;&lt;/div&gt;
 
 &lt;script&gt;
   const console = new sconsole('my-console', {
@@ -124,30 +204,35 @@
     fontFamily: 'monospace'
   });
 
-  console.addCommand('hello', () => {
+  console.addCommand('hello', () =&gt; {
     console.appendToConsole('Hello World! 👋');
   });
-&lt;/script&gt;</code></pre>
+&lt;/script&gt;
+</code></pre>
 
-          <div class="mt-4 p-3 bg-blue-50 border-l-4 border-blue-400">
-            <p class="text-sm text-blue-700">
-              <strong>💡 Tip:</strong> Replace <code>@latest</code> with a specific version like
-              <code>@v1.0.0</code> for production use.
-            </p>
+            <!-- Helpful tip about version pinning -->
+            <div class="mt-4 p-3 bg-blue-50 border-l-4 border-blue-400">
+              <p class="text-sm text-blue-700">
+                <strong>💡 Tip:</strong> Replace <code>@latest</code> with a specific version like
+                <code>@v1.0.0</code> for production use.
+              </p>
+            </div>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
 
-    <!-- Footer -->
-    <footer class="text-center mt-12 text-gray-500">
-      <p>&copy; 2025 S-Console. Made with ❤️ for the web development community.</p>
-    </footer>
-  </div>
+      <!--
+           FOOTER SECTION
+      -->
+      <footer class="text-center mt-12 text-gray-500">
+        <p>&copy; 2025 S-Console. Made with ❤️ for the web development community.</p>
+      </footer>
+    </div>
 
-  <script type="module" src="./main.ts"></script>
-</body>
-
+    <!--
+         SCRIPT INJECTION
+         This will be compiled by the build process.
+    -->
+    <script type="module" src="./main.ts"></script>
+  </body>
 </html>
-
-
