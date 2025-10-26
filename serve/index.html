@@ -9,20 +9,16 @@
 </head>
 
 <body>
-    <!-- Heading for the console interface -->
     <h1 class=" text-2xl font-bold mb-4">S-Console</h1>
 
-    <!-- Container where the console output will appear -->
     <div class="p-5" id="console-container"></div>
     
-    <!-- Form section to add new custom commands -->
     <div class="mt-10 p-5">
         <form id="commandForm">
             <div class="mb-4">
                 <label class="block text-gray700 text-sm font-bold mb-2">
                     Command Key
                 </label>
-                <!-- Input for the command keyword -->
                 <input
                     class="shadow border-#1e1e1e appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     id="commandKey" required>
@@ -31,13 +27,11 @@
                 <label class="block text-gray-700 text-sm font-bold mb-2">
                     What to Show
                 </label>
-                <!-- Input for what output text to show when the command is executed -->
                 <input
                     class="shadow border-#1e1e1e appearasnce-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     id="commandOutput">
             </div>
             <div class="flex items-center justify-left">
-                <!-- Button to add the new custom command -->
                 <button
                     class="border-2 border-#1e1e1e rounded-xl font-bold py-2 px-4 focus:outline-none focus:shadow-outline"
                     type="submit">
@@ -47,14 +41,11 @@
         </form>
     </div>
 
-    <!-- Script for S-Console core functionality -->
     <script src="../dist/s-console.umd.js"></script>
 
     <script>
-        // Initialize the console
         const console = new sconsole('console-container');
 
-        // Add some default commands
         console.addCommand('time', () => {
             console.appendToConsole(new Date().toLocaleString());
         });
@@ -65,7 +56,6 @@
             console.appendToConsole('Test command executed successfully!');
         });
 
-        // Handle form submission to add new custom commands dynamically
         const form = document.getElementById('commandForm');
         form?.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -74,7 +64,6 @@
             const key = keyInput.value;
             const output = outputInput.value;
 
-            // Add the new command to the console instance
             console.addCommand(key, () => {
                 console.appendToConsole(output);
             });
