@@ -1,16 +1,22 @@
-# Contributing to S-Console
+# 🤝 Contributing to S-Console
 
-Thank you for your interest in contributing to S-Console! This document provides guidelines and instructions for contributors to ensure a smooth collaboration process.
+Thank you for your interest in contributing to **S-Console**!  
+This guide will help you get started, follow coding standards, and submit meaningful contributions efficiently.
+
+---
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-Before you begin, make sure you have the following installed:
-- **Node.js** (version 16 or higher)
+Before you start, ensure you have the following installed:
+
+- **Node.js** (v16 or higher) – [Download here](https://nodejs.org/)
 - **npm** (comes with Node.js)
-- **Git** for version control
+- **Git** – [Download here](https://git-scm.com/)
 - A code editor (VS Code recommended)
+
+---
 
 ### Development Setup
 
@@ -60,29 +66,42 @@ s-console/
 
 ## 🎯 How to Contribute
 
+Contributing to **S-Console** is easy and beginner-friendly! Follow these steps to get started.
+
 ### 1. Choose What to Work On
 
-Check the [TODO section in README.md](./README.md#todo---roadmap--improvements) for available tasks, or:
-- Browse [open issues](https://github.com/gusdeyw/s-console/issues)
-- Look for issues labeled `good first issue` or `help wanted`
-- Propose new features by opening an issue first
+- Check the [TODO / Roadmap section in README.md](./README.md#todo---roadmap--improvements) for tasks that need attention.
+- Browse [open issues](https://github.com/gusdeyw/s-console/issues) to find bugs or feature requests.
+- Look for issues labeled:
+  - `good first issue` – Perfect for newcomers
+  - `help wanted` – Needs extra attention from contributors
+- Have an idea for a new feature? **Open an issue first** to discuss it with the maintainers before starting your work.
+
+💡 **Tip:** Start with smaller issues if you're new to the project. It’s a great way to understand the codebase and gain confidence before tackling bigger tasks.
 
 ### 2. Create a Branch
 
+Before making any changes, create a new branch to keep your work organized and separate from the main branch:
+
 ```bash
-# Create a new branch for your feature
+# Create a new branch for a feature
 git checkout -b feature/your-feature-name
 
-# Or for bug fixes
+# Create a new branch for a bug fix
 git checkout -b fix/bug-description
 ```
 
 ### 3. Make Your Changes
 
-- Write clean, readable code following our coding standards
-- Add comments for complex logic
-- Update documentation if needed
-- Test your changes thoroughly
+Once your branch is ready, start implementing your changes. Keep the following guidelines in mind:
+
+- ✨ **Write Clean Code**: Follow the project’s coding standards and best practices.
+- 📝 **Comment Wisely**: Add comments for complex logic or any non-obvious code.
+- 📚 **Update Documentation**: If your change affects usage or introduces new features, update README or relevant docs.
+- ✅ **Test Thoroughly**: Ensure your changes work as expected. Test edge cases and validate that existing functionality is not broken.
+
+💡 **Tip**: Commit small, logical chunks of work rather than one large commit. It makes code review easier and helps track changes.
+
 
 ### 4. Commit Your Changes
 
@@ -97,13 +116,27 @@ git commit -m "feat: add command history navigation with up/down arrows"
 #### Commit Message Guidelines
 
 Use conventional commit format:
-- `feat:` for new features
-- `fix:` for bug fixes  
-- `docs:` for documentation changes
-- `style:` for formatting changes
-- `refactor:` for code refactoring
-- `test:` for adding tests
-- `chore:` for maintenance tasks
+
+**Types:**
+- `feat:`     ✨ Introduce a new feature
+- `fix:`      🐛 Fix a bug
+- `docs:`     📝 Documentation only changes
+- `style:`    💄 Code style or formatting changes (no functional changes)
+- `refactor:` 🔨 Code changes that neither fix a bug nor add a feature
+- `test:`     ✅ Add or update tests
+- `chore:`    🔧 Maintenance tasks (e.g., updating dependencies, build scripts)
+
+**Example Commit Messages:**
+- `feat(auth): add JWT login support`
+- `fix(ui): resolve navbar overlapping issue`
+- `docs: update contributing guidelines`
+- `style: format code with prettier`
+- `refactor(api): optimize request handler`
+- `test: add unit tests for login function`
+- `chore: upgrade Node.js to v18`
+
+💡 **Tip:** Keep your summary under 50 characters and use imperative mood (“Add feature” not “Added feature”).
+
 
 ### 5. Push and Create Pull Request
 
@@ -122,11 +155,17 @@ Then create a Pull Request on GitHub with:
 
 ### TypeScript Guidelines
 
-- Use TypeScript for all new code
-- Define proper interfaces and types
-- Avoid `any` types when possible
-- Use meaningful variable and function names
-- Follow existing code patterns
+To maintain code quality and consistency across the project, please follow these TypeScript best practices:
+
+- ✅ **Use TypeScript** for all new features and modules.
+- ✅ **Define proper types and interfaces** for objects, function parameters, and return values.
+- ✅ **Avoid using `any`** unless absolutely necessary. Prefer `unknown` or proper type definitions.
+- ✅ **Use meaningful names** for variables, functions, and classes for readability.
+- ✅ **Follow existing patterns** and project conventions for structure and code style.
+- ✅ **Leverage strict type checking** (`strict: true` in `tsconfig.json`) for safer code.
+- ✅ **Use enums or literal types** instead of magic strings or numbers when applicable.
+- ✅ **Document complex types or interfaces** using JSDoc comments.
+- ✅ **Keep functions small and focused**, returning typed values instead of `any`.
 
 ### Code Formatting
 
@@ -148,12 +187,17 @@ function add(n: any, c: any): any {
 }
 ```
 
-### CSS/Styling Guidelines
+### CSS / Styling Guidelines
 
-- Use UnoCSS utility classes with `:uno:` prefix
-- Keep styles consistent with existing theme
-- Make styles responsive where applicable
-- Use CSS custom properties for theme values
+To maintain a consistent look and feel across the project, follow these best practices:
+
+- ✅ **Use UnoCSS utility classes** with the `:uno:` prefix for all new styles.
+- ✅ **Follow the existing theme** for colors, fonts, and spacing to ensure consistency.
+- ✅ **Make styles responsive** using mobile-first principles and responsive utility classes.
+- ✅ **Use CSS custom properties** (`--variable-name`) for theme values to improve maintainability.
+- ✅ **Avoid inline styles** unless absolutely necessary.
+- ✅ **Group related classes logically** and keep class names descriptive for readability.
+- ✅ **Test your styles** across different screen sizes and browsers whenever possible.
 
 ```html
 <!-- ✅ Good - UnoCSS utilities -->
@@ -165,24 +209,26 @@ function add(n: any, c: any): any {
 
 ## 🧪 Testing Guidelines
 
-### Manual Testing
+### 🧪 Manual Testing
 
-Before submitting your PR, test:
+Before submitting your pull request, ensure that your changes are thoroughly tested. Check the following:
+
 - Basic console functionality (input, output, commands)
-- Your specific changes work as expected
-- No regression in existing features
-- Different browser compatibility (Chrome, Firefox, Safari)
-- Mobile responsiveness
+- Your specific changes work as expected without breaking existing features
+- Compatibility across supported browsers (Chrome, Firefox, Safari)
+- Mobile responsiveness and different screen sizes
+- Proper handling of edge cases and error conditions
 
-### Testing Checklist
+### ✅ Testing Checklist
 
-- [ ] Console initializes properly
-- [ ] Built-in commands work (`help`, `clear`)
-- [ ] Custom commands can be added and executed
-- [ ] Input handling works correctly
-- [ ] Styling applies properly
-- [ ] No console errors in browser dev tools
-- [ ] Works with different container configurations
+- [ ] Console initializes correctly without errors
+- [ ] Built-in commands function as intended (`help`, `clear`, etc.)
+- [ ] Custom commands can be added, executed, and removed successfully
+- [ ] Input handling works for valid and invalid entries
+- [ ] Styling and layout render correctly across devices
+- [ ] No console errors or warnings in browser developer tools
+- [ ] Works with different container sizes and configurations
+- [ ] All new features are tested manually and pass expected behavior
 
 ## 📝 Documentation
 
@@ -265,17 +311,23 @@ We follow [Semantic Versioning](https://semver.org/):
 
 ## 📞 Getting Help
 
-If you need help:
-- Check existing [issues](https://github.com/gusdeyw/s-console/issues)
-- Start a [discussion](https://github.com/gusdeyw/s-console/discussions)
-- Ask in your PR if you're stuck on something specific
+If you run into issues or need guidance, here’s how you can get support:
+
+- **Check existing issues** – Someone might have already faced the same problem: [Issues](https://github.com/gusdeyw/s-console/issues)
+- **Start a discussion** – Ask questions or share ideas with the community: [Discussions](https://github.com/gusdeyw/s-console/discussions)
+- **Comment on your PR** – If you’re stuck on a specific change, mention it in your pull request for feedback from maintainers
+- **Reach out on social/community channels** (if applicable) for real-time help
+
+> 💡 Tip: Always provide clear details about the problem, error messages, and steps to reproduce it. This speeds up the help process!
 
 ## 🎉 Recognition
 
-Contributors are recognized through:
-- GitHub contributors list
-- Changelog acknowledgments
-- Special mentions for significant contributions
+We love acknowledging our contributors! Your efforts will be recognized through:
+
+- **GitHub contributors list** – Your profile will appear as a contributor
+- **Changelog acknowledgments** – Notable contributions will be mentioned in release notes
+- **Special mentions** – Significant improvements or features may get highlighted in the project README or community announcements
+- **Community reputation** – Build credibility and connect with other developers through meaningful contributions
 
 ## ⚖️ License
 
