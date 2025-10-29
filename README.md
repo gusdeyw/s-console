@@ -11,6 +11,24 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/gusdeyw/s-console/actions/workflows/build-library.yml">
+    <img src="https://img.shields.io/github/actions/workflow/status/gusdeyw/s-console/build-library.yml?branch=main&label=build" alt="Build Status">
+  </a>
+  <a href="https://github.com/gusdeyw/s-console/releases">
+    <img src="https://img.shields.io/github/v/release/gusdeyw/s-console?label=version" alt="Version">
+  </a>
+  <a href="https://github.com/gusdeyw/s-console/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/gusdeyw/s-console" alt="License">
+  </a>
+  <a href="https://cdn.jsdelivr.net/gh/gusdeyw/s-console@latest/dist/">
+    <img src="https://img.shields.io/badge/CDN-jsDelivr-orange" alt="CDN">
+  </a>
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white" alt="TypeScript">
+  <img src="https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white" alt="Vite">
+  <img src="https://img.shields.io/badge/UnoCSS-333333?logo=tailwind-css&logoColor=white" alt="UnoCSS">
+</p>
+
+<p align="center">
   <a href="https://gusdeyw.github.io/s-console/">🚀 Live Demo</a> • 
   <a href="https://github.com/gusdeyw/s-console">📦 GitHub</a> • 
   <a href="https://cdn.jsdelivr.net/gh/gusdeyw/s-console@latest/dist/">📡 CDN</a>
