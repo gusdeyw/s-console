@@ -382,6 +382,45 @@ npm run build
 - ES6+ support required
 - CSS Grid and Flexbox support required
 
+## Community Contributors
+
+S-Console is built by an amazing community of contributors who share a passion for creating great tools. Everyone contributes happily to make this project better! 🌟
+
+### Contributors
+
+We'd like to thank our amazing contributors! 🙏
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/gusdeyw">
+        <img src="https://github.com/gusdeyw.png?size=100" width="80" height="80" alt="gusdeyw"/>
+        <br />
+        <sub><b>gusdeyw</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/davidgeri">
+        <img src="https://github.com/davidgeri.png?size=100" width="80" height="80" alt="davidgeri"/>
+        <br />
+        <sub><b>davidgeri</b></sub>
+      </a>
+    </td>
+  </tr>
+</table>
+
+### Join Our Community
+
+We welcome contributions from everyone! Whether it's code, documentation, bug reports, or feature suggestions - every contribution makes a difference.
+
+<a href="https://github.com/gusdeyw/s-console/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=gusdeyw/s-console" alt="Contributors" />
+</a>
+
+#### How to Contribute
+
+Please see our [Contributing Guide](./CONTRIBUTING.md) for detailed information on how to get started with contributing to S-Console.
+
 ## License
 
 MIT License - see LICENSE file for details.
